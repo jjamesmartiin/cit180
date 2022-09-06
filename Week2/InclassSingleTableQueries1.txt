@@ -2,12 +2,15 @@ SUPPLIERS
 
 0. Display the structure of the suppliers table.
 
+describe fall22suppliers
+DESC fall22suppliers;
 
 1. List all information about all suppliers.
-
+SELECT * FROM fall22suppliers;
 
 2. Use aliases for the column headings in list of suppliers. (page 80, 81)
-
+SELECT supplierid AS ID, supplierName AS name, supplieraddress AS 'street address',
+suppliercity AS city, supplierstate AS STATE FROM fall22suppliers;
 
 3. Combine text columns into a single column, as shown in example. (page 78, 79)
 
@@ -17,35 +20,35 @@ SUPPLIERS
 | AB   | Abbot          | 123 Terry, Sacramento, CA     |
 +------+----------------+-------------------------------+
 
+SELECT supplierid AS ID, suppliername AS name, CONCAT(supplieraddress, ', ', suppliercity, ', ', supplierstate) AS 'supplier address' FROM fall22suppliers;
+
 
 4. List the states in which we have suppliers. 
-
+SELECT DISTINCT supplierstate FROM fall22suppliers;
 
 
 5. In which cities and states to we have suppliers? 
-
-
+SELECT DISTINCT suppliercity, supplierstate FROM fall22suppliers;
 
 6. For all suppliers, list supplier name, supplier city, and supplier state. 
-
+SELECT suppliername as name, suppliercity as city, supplierstate as state FROM fall22suppliers;
 
 a. by supplier city
-
+SELECT suppliername as name, suppliercity as city, supplierstate as state FROM fall22suppliers ORDER BY suppliercity;
 
 b. by supplier state
-
+SELECT suppliername as name, suppliercity as city, supplierstate as state FROM fall22suppliers ORDER BY supplierstate;
 
 c. by state, with suppliers in same state by city
-
-
+SELECT suppliername as name, suppliercity as city, supplierstate as state FROM fall22suppliers ORDER BY supplierstate, suppliercity;
 
 CUSTOMERS
 
 7. Display the structure of the customers table.
-
+DESC fall22customers;
 
 8. For all the customers list customer id, current balance, credit limit, and the difference between credit limit and current balance.
-
+SELECT customerID, currentBalance, creditLimit, creditLimit - currentBalance from fall22customers;
 
 9. List customer id, first name (alias), last name (alias), current balance, credit limit, the difference between credit limit and current balance with a column alias of "remaining balance"
 

@@ -3,7 +3,7 @@ CREATE TABLE Fall22Customers
 CustomerFName VARCHAR(15),
 CustomerLName VARCHAR(15),
 CustomerStreetAddress VARCHAR(20),
-CustomerCity VARCHAR(20),
+CustomerCity VARCHAR(21),
 CustomerState CHAR(2),
 CurrentBalance DECIMAL(7,2),
 CreditLimit DECIMAL(8,2),
@@ -116,5 +116,4 @@ INSERT INTO Fall22Parts VALUES
 ('CB03','BIKE','SG',187.5,'NU'),
 ('CX11','MIXER','HW',57.95,'VB'),
 ('CZ81','WEIGHTS','SG',108.99,'WX');
-
 
