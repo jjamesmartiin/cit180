@@ -1,0 +1,86 @@
+DROP TABLE IF EXISTS books;
+
+CREATE TABLE books
+(Bkcode varchar(6),
+bktitle varchar(50),
+author varchar(50),
+pub_year smallint,
+pub_code varchar(4),
+category varchar(4),
+cost decimal(5,2),
+in_stock smallint,
+total_ordered smallint,
+CONSTRAINT pk_books primary key (bkcode));
+
+INSERT INTO books VALUES ('0180','Shyness','Zinbardo, Philip',1992,'BB','PSY',7.65,1,267);
+INSERT INTO books VALUES ('0189','Kane and Abel','Archer, Jeffrey',1993,'PB','FIC',5.55,2,293);
+INSERT INTO books VALUES ('0200','The Stranger','Camus, Albert',1995,'BB','FIC',8.75,3,440);
+INSERT INTO books VALUES ('0378','The Dunwich Horror and Others','Lovecraft, H. P.',1991,'PB','HOR',19.75,3,179);
+INSERT INTO books VALUES ('079X','Smoke-screen','Francis, Dick',1990,'PB','MYS',4.55,9,234);
+INSERT INTO books VALUES ('0808','Knockdown','Francis, Dick',1996,'PB','MYS',4.75,2,441);
+INSERT INTO books VALUES ('1351','Cujo','King, Stephen',1991,'SG','HOR',6.65,5,366);
+INSERT INTO books VALUES ('1382','Marcel Duchamp','Paz, Octavio',1992,'PB','ART',11.25,2,122);
+INSERT INTO books VALUES ('138X','Death on the Nile','Christie, Agatha',1992,'BB','MYS',3.95,2,297);
+INSERT INTO books VALUES ('2226','Ghost from the Grand Banks','Clarke, Arthur C.',1996,'BB','SFI',19.95,8,78);
+INSERT INTO books VALUES ('2281','Prints of the 20th Century','Castleman, Riva',1995,'PB','ART',13.25,4,81);
+INSERT INTO books VALUES ('2766','The Prodigal Daughter','Archer, Jeffrey',1991,'PB','FIC',5.45,3,178);
+INSERT INTO books VALUES ('2908','Hymns to the Night','Novalis',1994,'BB','POE',6.75,5,258);
+INSERT INTO books VALUES ('3350','Higher Creativity','Harmon, Willis',1994,'PB','PSY',9.75,1,83);
+INSERT INTO books VALUES ('3743','First Among Equals','Archer, Jeffrey',1992,'PB','FIC',3.95,2,352);
+INSERT INTO books VALUES ('3906','Vortex','Cussler, Clive',1992,'BB','SUS',5.45,5,343);
+INSERT INTO books VALUES ('5163','The Organ','Williams, Peter',1994,'SG','MUS',16.95,1,302);
+INSERT INTO books VALUES ('5790','Database Systems','Pratt, Philip',1992,'BF','CS',54.95,4,27);
+INSERT INTO books VALUES ('6128','Evil Under the Sun','Christie, Agatha',1992,'PB','MYS',4.45,5,336);
+INSERT INTO books VALUES ('6328','Vixen 07','Cussler, Clive',1996,'BB','SUS',5.55,2,195);
+INSERT INTO books VALUES ('669X','A Guide to SQL','Pratt, Philip',1990,'BF','CS',23.95,1,173);
+INSERT INTO books VALUES ('6908','DOS Essentials','Southworth, Rod',1995,'BF','CS',20.5,2,22);
+INSERT INTO books VALUES ('7405','Night Probe','Cussler, Clive',1993,'BB','SUS',5.65,3,77);
+INSERT INTO books VALUES ('7443','Carrie','King, Stephen',1996,'SG','HOR',6.75,4,383);
+INSERT INTO books VALUES ('7559','Risk','Francis, Dick',1996,'PB','MYS',3.95,2,346);
+INSERT INTO books VALUES ('7947','dBASE Programming','Pratt, Philip',1991,'BF','CS',39.9,2,399);
+INSERT INTO books VALUES ('8092','Magritte','Gimferrer, Pere',1994,'SG','ART',21.95,3,140);
+INSERT INTO books VALUES ('8720','The Castle','Kafka, Franz',1994,'BB','FIC',12.15,1,459);
+INSERT INTO books VALUES ('9611','Amerika','Kafka, Franz',1994,'BB','FIC',10.95,1,210);
+INSERT INTO books VALUES ('8898','Office 2000 Visual Basic for Applications','Doctor, David',1999,'MSP','CS',19.99,9,34);
+INSERT INTO books VALUES ('9088','Longitude','Sobel, Dava',1995,'PGB','HIST',13.99,7,123);
+
+DROP TABLE IF EXISTS publishers;
+
+CREATE TABLE publishers
+(pub_code varchar(4),
+pub_name varchar(25),
+pub_city varchar(25),
+pub_state char(2),
+CONSTRAINT pk_publishers primary key (pub_code));
+
+INSERT INTO Publishers VALUES ('BB','Bantam Books','New York','NY');
+INSERT INTO Publishers VALUES ('BF','Boyd and Fraser','Boston','MA');
+INSERT INTO Publishers VALUES ('MM','Macmillan','New York','NY');
+INSERT INTO Publishers VALUES ('OR','O''Reilly','Sebastopol','CA');
+INSERT INTO Publishers VALUES ('PB','Pocket Books','New York','NY');
+INSERT INTO Publishers VALUES ('PH','Prentice Hall','Englewood Cliffs','NJ');
+INSERT INTO Publishers VALUES ('SG','Signet','New York','NY');
+INSERT INTO Publishers VALUES ('MSP','Microsoft Press','Redmond','WA');
+INSERT INTO Publishers VALUES ('PGB','Penguin Books','New York','NY');
+INSERT INTO Publishers VALUES ('MIT','MIT Press','Cambridge','MA');
+
+DROP TABLE Classifications;
+
+CREATE TABLE Classifications
+(category varchar(4),
+description varchar(24),
+CONSTRAINT pk_classifications PRIMARY KEY (category));
+
+INSERT INTO Classifications VALUES('ART','Art');
+INSERT INTO Classifications VALUES('BIO','Biography');
+INSERT INTO Classifications VALUES('BUS','Business');
+INSERT INTO classifications VALUES('CS','Computer Science');
+INSERT INTO classifications VALUES('FIC','Fiction');
+INSERT INTO classifications VALUES('HIST','History');
+INSERT INTO classifications VALUES('HOR','Horror');
+INSERT INTO classifications VALUES('MUS','Music');
+INSERT INTO classifications VALUES('MYS','Mystery');
+INSERT INTO classifications VALUES('POE','Poetry');
+INSERT INTO classifications VALUES('PSY','Psychology');
+INSERT INTO classifications VALUES('SFI','Science Fiction');
+INSERT INTO classifications VALUES('SUS','Suspense');

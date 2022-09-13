@@ -1,0 +1,52 @@
+Space for notes:
+
+Tables of Parts 180 Fall 2022 jpg
+
+
+
+parts-with-suppliers table jpg
+
+
+
+Parts with links between tables jpg
+
+0. List all data in the parts table.
+
+
+00. List all data in the suppliers table.
+
+
+
+1. Use a JOIN to bring the two tables together: parts and suppliers
+
+
+
+2. List part number, part description and supplier name from a join of the parts table and the suppliers table.
+
+
+
+3. Same, using table aliases
+
+
+
+4. All above use an Explicit join. There is something called an implicit join mentioned in the book.
+
+
+
+5. Who supplies the parts that have a description beginning with the letter S? Include part number, part description and supplier name.
+
+
+000. List all data in the customers table.
+
+
+0000. List all data in the orders table.
+
+
+6. Who placed orders and when were the orders placed? Include customer number, customer name, order number and order date.
+
+
+
+7. Answer the same question but use USING instead of ON
+
+
+

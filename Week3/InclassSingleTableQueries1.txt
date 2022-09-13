@@ -1,0 +1,70 @@
+SUPPLIERS
+
+0. Display the structure of the suppliers table.
+
+
+1. List all information about all suppliers.
+
+
+2. Use aliases for the column headings in list of suppliers. (page 80, 81)
+
+
+3. Combine text columns into a single column, as shown in example. (page 78, 79)
+
++------+----------------+-------------------------------+
+| id   | name           | supplier address              |
++------+----------------+-------------------------------+
+| AB   | Abbot          | 123 Terry, Sacramento, CA     |
++------+----------------+-------------------------------+
+
+
+4. List the states in which we have suppliers. 
+
+
+
+5. In which cities and states to we have suppliers? 
+
+
+
+6. For all suppliers, list supplier name, supplier city, and supplier state. 
+
+
+a. by supplier city
+
+
+b. by supplier state
+
+
+c. by state, with suppliers in same state by city
+
+
+
+CUSTOMERS
+
+7. Display the structure of the customers table.
+
+
+8. For all the customers list customer id, current balance, credit limit, and the difference between credit limit and current balance.
+
+
+9. List customer id, first name (alias), last name (alias), current balance, credit limit, the difference between credit limit and current balance with a column alias of "remaining balance"
+
+
+
+10. Make a copy of query from #9 and sort in order of remaining balance.
+
+
+
+11. List customer id, first name (alias), last name (alias), current balance, credit limit. Sort by credit limit (lowest to highest), with customers with the same credit limit sorted by current balance (highest to lowest).
+
+
+PARTS
+
+12. Display the structure of the customers table.
+
+
+13. List the parts (part number and description), itemclass, unit price, 10% discounted price, 15% discounted price. Sort by itemclass with parts in same item class parts are arranged with the most expensive part at the top of the list.
+
+
+14. Modify #13 to use the ROUND function to round the discounted prices to the nearest cent and use columns aliases: 10% Discounted Price and 20% Discounted Price.
+

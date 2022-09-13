@@ -1,0 +1,36 @@
+1. List each book title, year of publication and the name of its publisher;
+
+
+2. List the book titles and publisher name for publishers in New York City.
+
+
+3. List the authors, book titles and the description of the book's category.
+
+
+4. List the category descripion, book title and cost for books costing less than $10.
+
+
+5. List the book title, publisher name and publisher's city for publishers not in New York City.
+
+
+6. List name and state of publishers in the publishers table NOT represented in the books table. 
+
+
+7. List category and description in the classifications table NOT represented in the books table. 
+
+
+8. List the book title, publisher name, in stock amounts and costs for all books with more than 3 in stock or cost more than $10 that are published by non-New York State.
+
+
+9. List the book title, publisher name, in stock amounts and costs for all books with more than 3 in stock that are published by non-New York State or that cost more than $10.
+
+
+10. In which categories has each author published? List author name and category description. Remove duplicates. Sort by author
+
+
+11. In which categories has each publisher published? List publisher name and category description. Remove duplicates. Sort by publisher.
+
+
+
+
+

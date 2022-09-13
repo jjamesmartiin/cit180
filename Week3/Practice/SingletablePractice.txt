@@ -1,0 +1,20 @@
+Use Books and Publishers tables from BooksPubs.txt. For each question include the SQL statement and the answer set, and the number of rows returned. Do your work in a text editor.
+
+1.	List the structure of the Books table.
+2.	List all the data in the Books table.
+3.	What are the titles, authors and publication dates of books published before 1993?
+4.	What are the titles, authors and publication dates of books published in 1993 or before?
+5.	What are the titles, authors and publication dates of books published in 1993?
+6.	What are the titles, authors and publication dates of books published in 1993 or after?
+7.	Which categories of books (category code only) are represented in the book inventory? Be sure you remove duplicates.
+8.	Which publishers (publisher code only) are represented in the book inventory? Be sure you remove duplicates.
+9.	List the structure of the Publishers table.
+10.	List all the data in the Publishers table.
+11.	Which cities are represented in the publishers table? List pub_city, remove duplicates.
+12.	Which cities, states are represented in the publishers table? List as city, state (eg. Las Vegas, NV) with alias Location, remove duplicates.
+13.	List the book code (bkcode) and category for books in categories ART or MUS.
+14.	List the title, cost and publisher code of books costing between 5.00 and 10.00.
+15.	List the title and cost of books costing less than 10.00 with the least expensive book at the top of the list.
+16.	List the title, pub_code and in_stock of books with in_stock values greater than 3, arranged so that the pub_codes are in alphabetical order and for each publisher the in_stock values are in descending order.
+17.	List the author, title and cost of books published by a publisher whose code starts with B.
+18.	List the author, title and cost of books published by a publisher whose code contains B.
