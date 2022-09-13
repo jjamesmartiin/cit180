@@ -1,88 +1,115 @@
 15. List part description, item class and unit price for all parts with the most expensive part(s) on the top of the list.
-
 SELECT partdescription, itemclass, unitprice
-FROM Fall22parts
-
+FROM Fall22parts order by unitprice desc;
+#	partdescription	itemclass	unitprice
+1	STOVE	AP	402.99
+2	WASHER	AP	311.95
+3	BIKE	SG	187.50
+4	WEIGHTS	SG	108.99
+5	MIXER	HW	57.95
+6	TOASTER	HW	34.95
+7	SKATES	SG	24.95
+8	SKILLET	HW	19.95
+9	IRON	HW	17.95
+10	BASEBALL	SG	4.95
 
 16. List part description, item class and unit price for parts costing more than $100.
-
-SELECT partdescription, itemclass, unitprice
-FROM Fall22parts
-WHERE
+select partDescription, itemclass, unitprice from fall22parts where unitprice > 100;
+#	partDescription	itemclass	unitprice
+1	STOVE	AP	402.99
+2	WASHER	AP	311.95
+3	BIKE	SG	187.50
+4	WEIGHTS	SG	108.99
 
 17a. List part description, item class and unit price for parts in item class SG.
-
 SELECT partdescription, itemclass, unitprice
 FROM Fall22parts
-WHERE
+WHERE itemClass="SG"
+#	partdescription	itemclass	unitprice
+1	SKATES	SG	24.95
+2	BASEBALL	SG	4.95
+3	BIKE	SG	187.50
+4	WEIGHTS	SG	108.99
 
 17b. List part description, item class and unit price for parts in item class sg.
-
 SELECT partdescription, itemclass, unitprice
 FROM Fall22parts
-WHERE
-
+WHERE itemClass="sg"
+#	partdescription	itemclass	unitprice
+1	SKATES	SG	24.95
+2	BASEBALL	SG	4.95
+3	BIKE	SG	187.50
+4	WEIGHTS	SG	108.99
 
 18. List part description, item class and unit price for SG parts costing more than $100.
-
 SELECT partdescription, itemclass, unitprice
 FROM Fall22parts
-WHERE
+WHERE itemclass='sg' && unitprice > 100
+#	partdescription	itemclass	unitprice
+1	BIKE	SG	187.50
+2	WEIGHTS	SG	108.99
 
 19. List part description, item class and unit price for SG parts or for parts costing more than $100.
-
-SELECT partdescription, itemclass, unit price
+SELECT partdescription, itemclass, unitprice
 FROM Fall22parts
-WHERE
+WHERE itemclass='sg' || unitprice > 100
+#	partdescription	itemclass	unitprice
+1	SKATES	SG	24.95
+2	BASEBALL	SG	4.95
+3	STOVE	AP	402.99
+4	WASHER	AP	311.95
+5	BIKE	SG	187.50
+6	WEIGHTS	SG	108.99
 
 20a. List all information about parts costing from 5 to 25 (inclusive).
-
-SELECT *
-FROM Fall22parts
-WHERE
+select * from fall22parts where unitprice>=5 && unitprice<=25
+#	PartNO	PartDescription	ItemClass	UnitPrice	SupplierID
+1	AX12	IRON	HW	17.95	AB
+2	AZ52	SKATES	SG	24.95	AB
+3	CA14	SKILLET	HW	19.95	WX
 
 20b. List all information about parts costing from 5 to 25 (inclusive), using BETWEEN operator
-
 SELECT *
 FROM Fall22parts
-WHERE
-
-Suppliers
+WHERE unitprice between 5 and 25
+#	PartNO	PartDescription	ItemClass	UnitPrice	SupplierID
+1	AX12	IRON	HW	17.95	AB
+2	AZ52	SKATES	SG	24.95	AB
+3	CA14	SKILLET	HW	19.95	WX
 
 21. 	List all information about suppliers located in Michigan.
-
-SELECT *
+SELECT * 
 FROM Fall22suppliers
-WHERE
+where supplierstate='mi'
 
 22.	List name and state of suppliers not located in Michigan.
-
 SELECT suppliername, supplierstate
 FROM Fall22suppliers
-WHERE
+WHERE supplierstate!='mi'
 
 23.	List suppliers with names beginning with A through P (inclusive).
-
 SELECT suppliername, supplierstate
 FROM Fall22suppliers
-WHERE
+WHERE supplierName < 'q'
 
 24.	List supplier name and supplier state for suppliers located in NV or NM.
-
 SELECT suppliername, supplierstate
 FROM Fall22suppliers
-WHERE
+WHERE supplierstate='nv' || supplierstate='nm';
 
 25.	List supplier name and supplier state for suppliers not located in NV or NM.
-
 SELECT suppliername, supplierstate
 FROM Fall22suppliers
-WHERE
+WHERE supplierstate!='nv' || supplierstate!='nm';
 
 26. 	Which of our suppliers have a name starting with T? 
-
 SELECT suppliername
 FROM Fall22suppliers
-WHERE
+WHERE suppliername like 'T%';
 
 27. How is a query processed?
+  find the table table              "FROM"
+  filter the search                 "WHERE"
+  select                            "SELECT"
+  order the colums                  "ORDER"
+  limit number returned             "LIMIT"

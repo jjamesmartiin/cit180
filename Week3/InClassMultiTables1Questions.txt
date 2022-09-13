@@ -11,26 +11,153 @@ parts-with-suppliers table jpg
 Parts with links between tables jpg
 
 0. List all data in the parts table.
-
+SELECT * from fall22parts;
 
 00. List all data in the suppliers table.
-
-
+SELECT * from fall22suppliers
+#	SupplierID	SupplierName	SupplierAddress	SupplierCity	SupplierState
+1	AB	Abbot	123 Terry	Sacramento	CA
+2	NU	New Utensils	986 Bonita	Lansing	MI
+3	PO	Polar	9864 George	Lansing	MI
+4	QV	Quail and Vine	9450 Vine	Detroit	MI
+5	RO	Reed Only	129 Callahan	Las Vegas	NV
+6	TY	Tyson	5212 Broadway	Las Vegas	NM
+7	VB	Victor Bruno	9876 Springburn	Portland	OR
+8	WX	Weights Extra	87 W. Liverpool	Ada	MI
 
 1. Use a JOIN to bring the two tables together: parts and suppliers
-
-
+SELECT partno, partdescription, unitprice, fall22parts.supplierid, fall22suppliers.supplierid, suppliername
+from fall22parts
+join fall22suppliers
+#	partno	partdescription	unitprice	supplierid	supplierid	suppliername
+1	AX12	IRON	17.95	AB	AB	Abbot
+2	AX12	IRON	17.95	AB	NU	New Utensils
+3	AX12	IRON	17.95	AB	PO	Polar
+4	AX12	IRON	17.95	AB	QV	Quail and Vine
+5	AX12	IRON	17.95	AB	RO	Reed Only
+6	AX12	IRON	17.95	AB	TY	Tyson
+7	AX12	IRON	17.95	AB	VB	Victor Bruno
+8	AX12	IRON	17.95	AB	WX	Weights Extra
+9	AZ52	SKATES	24.95	AB	AB	Abbot
+10	AZ52	SKATES	24.95	AB	NU	New Utensils
+11	AZ52	SKATES	24.95	AB	PO	Polar
+12	AZ52	SKATES	24.95	AB	QV	Quail and Vine
+13	AZ52	SKATES	24.95	AB	RO	Reed Only
+14	AZ52	SKATES	24.95	AB	TY	Tyson
+15	AZ52	SKATES	24.95	AB	VB	Victor Bruno
+16	AZ52	SKATES	24.95	AB	WX	Weights Extra
+17	BA74	BASEBALL	4.95	TY	AB	Abbot
+18	BA74	BASEBALL	4.95	TY	NU	New Utensils
+19	BA74	BASEBALL	4.95	TY	PO	Polar
+20	BA74	BASEBALL	4.95	TY	QV	Quail and Vine
+21	BA74	BASEBALL	4.95	TY	RO	Reed Only
+22	BA74	BASEBALL	4.95	TY	TY	Tyson
+23	BA74	BASEBALL	4.95	TY	VB	Victor Bruno
+24	BA74	BASEBALL	4.95	TY	WX	Weights Extra
+25	BH22	TOASTER	34.95	TY	AB	Abbot
+26	BH22	TOASTER	34.95	TY	NU	New Utensils
+27	BH22	TOASTER	34.95	TY	PO	Polar
+28	BH22	TOASTER	34.95	TY	QV	Quail and Vine
+29	BH22	TOASTER	34.95	TY	RO	Reed Only
+30	BH22	TOASTER	34.95	TY	TY	Tyson
+31	BH22	TOASTER	34.95	TY	VB	Victor Bruno
+32	BH22	TOASTER	34.95	TY	WX	Weights Extra
+33	BT04	STOVE	402.99	WX	AB	Abbot
+34	BT04	STOVE	402.99	WX	NU	New Utensils
+35	BT04	STOVE	402.99	WX	PO	Polar
+36	BT04	STOVE	402.99	WX	QV	Quail and Vine
+37	BT04	STOVE	402.99	WX	RO	Reed Only
+38	BT04	STOVE	402.99	WX	TY	Tyson
+39	BT04	STOVE	402.99	WX	VB	Victor Bruno
+40	BT04	STOVE	402.99	WX	WX	Weights Extra
+41	BZ66	WASHER	311.95	AB	AB	Abbot
+42	BZ66	WASHER	311.95	AB	NU	New Utensils
+43	BZ66	WASHER	311.95	AB	PO	Polar
+44	BZ66	WASHER	311.95	AB	QV	Quail and Vine
+45	BZ66	WASHER	311.95	AB	RO	Reed Only
+46	BZ66	WASHER	311.95	AB	TY	Tyson
+47	BZ66	WASHER	311.95	AB	VB	Victor Bruno
+48	BZ66	WASHER	311.95	AB	WX	Weights Extra
+49	CA14	SKILLET	19.95	WX	AB	Abbot
+50	CA14	SKILLET	19.95	WX	NU	New Utensils
+51	CA14	SKILLET	19.95	WX	PO	Polar
+52	CA14	SKILLET	19.95	WX	QV	Quail and Vine
+53	CA14	SKILLET	19.95	WX	RO	Reed Only
+54	CA14	SKILLET	19.95	WX	TY	Tyson
+55	CA14	SKILLET	19.95	WX	VB	Victor Bruno
+56	CA14	SKILLET	19.95	WX	WX	Weights Extra
+57	CB03	BIKE	187.50	NU	AB	Abbot
+58	CB03	BIKE	187.50	NU	NU	New Utensils
+59	CB03	BIKE	187.50	NU	PO	Polar
+60	CB03	BIKE	187.50	NU	QV	Quail and Vine
+61	CB03	BIKE	187.50	NU	RO	Reed Only
+62	CB03	BIKE	187.50	NU	TY	Tyson
+63	CB03	BIKE	187.50	NU	VB	Victor Bruno
+64	CB03	BIKE	187.50	NU	WX	Weights Extra
+65	CX11	MIXER	57.95	VB	AB	Abbot
+66	CX11	MIXER	57.95	VB	NU	New Utensils
+67	CX11	MIXER	57.95	VB	PO	Polar
+68	CX11	MIXER	57.95	VB	QV	Quail and Vine
+69	CX11	MIXER	57.95	VB	RO	Reed Only
+70	CX11	MIXER	57.95	VB	TY	Tyson
+71	CX11	MIXER	57.95	VB	VB	Victor Bruno
+72	CX11	MIXER	57.95	VB	WX	Weights Extra
+73	CZ81	WEIGHTS	108.99	WX	AB	Abbot
+74	CZ81	WEIGHTS	108.99	WX	NU	New Utensils
+75	CZ81	WEIGHTS	108.99	WX	PO	Polar
+76	CZ81	WEIGHTS	108.99	WX	QV	Quail and Vine
+77	CZ81	WEIGHTS	108.99	WX	RO	Reed Only
+78	CZ81	WEIGHTS	108.99	WX	TY	Tyson
+79	CZ81	WEIGHTS	108.99	WX	VB	Victor Bruno
+80	CZ81	WEIGHTS	108.99	WX	WX	Weights Extra
 
 2. List part number, part description and supplier name from a join of the parts table and the suppliers table.
-
+SELECT partno, partdescription, unitprice, fall22parts.supplierid, fall22suppliers.supplierid, suppliername
+from fall22parts
+join fall22suppliers on fall22suppliers.supplierid=fall22parts.supplierid
+#	partno	partdescription	unitprice	supplierid	supplierid	suppliername
+1	AX12	IRON	17.95	AB	AB	Abbot
+2	AZ52	SKATES	24.95	AB	AB	Abbot
+3	BA74	BASEBALL	4.95	TY	TY	Tyson
+4	BH22	TOASTER	34.95	TY	TY	Tyson
+5	BT04	STOVE	402.99	WX	WX	Weights Extra
+6	BZ66	WASHER	311.95	AB	AB	Abbot
+7	CA14	SKILLET	19.95	WX	WX	Weights Extra
+8	CB03	BIKE	187.50	NU	NU	New Utensils
+9	CX11	MIXER	57.95	VB	VB	Victor Bruno
+10	CZ81	WEIGHTS	108.99	WX	WX	Weights Extra
 
 
 3. Same, using table aliases
-
+SELECT partno, partdescription, unitprice, p.supplierid, s.supplierid, suppliername
+from fall22parts p
+join fall22suppliers s on s.supplierid=p.supplierid
+#	partno	partdescription	unitprice	supplierid	supplierid	suppliername
+1	AX12	IRON	17.95	AB	AB	Abbot
+2	AZ52	SKATES	24.95	AB	AB	Abbot
+3	BA74	BASEBALL	4.95	TY	TY	Tyson
+4	BH22	TOASTER	34.95	TY	TY	Tyson
+5	BT04	STOVE	402.99	WX	WX	Weights Extra
+6	BZ66	WASHER	311.95	AB	AB	Abbot
+7	CA14	SKILLET	19.95	WX	WX	Weights Extra
+8	CB03	BIKE	187.50	NU	NU	New Utensils
+9	CX11	MIXER	57.95	VB	VB	Victor Bruno
+10	CZ81	WEIGHTS	108.99	WX	WX	Weights Extra
 
 
 4. All above use an Explicit join. There is something called an implicit join mentioned in the book.
-
+SELECT partno,unitprice,suppliername from fall22parts p join fall22suppliers s where p.supplierid=s.supplierid
+#	partno	unitprice	suppliername
+1	AX12	17.95	Abbot
+2	AZ52	24.95	Abbot
+3	BA74	4.95	Tyson
+4	BH22	34.95	Tyson
+5	BT04	402.99	Weights Extra
+6	BZ66	311.95	Abbot
+7	CA14	19.95	Weights Extra
+8	CB03	187.50	New Utensils
+9	CX11	57.95	Victor Bruno
+10	CZ81	108.99	Weights Extra
 
 
 5. Who supplies the parts that have a description beginning with the letter S? Include part number, part description and supplier name.

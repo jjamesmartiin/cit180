@@ -3,14 +3,38 @@ SUPPLIERS
 0. Display the structure of the suppliers table.
 
 describe fall22suppliers
-DESC fall22suppliers;
+DESC fall22suppliers
+#	Field	Type	Null	Key	Default	Extra
+1	SupplierID	char(2)	NO	PRI		
+2	SupplierName	varchar(20)	YES			
+3	SupplierAddress	varchar(20)	YES			
+4	SupplierCity	varchar(20)	YES			
+5	SupplierState	char(2)	YES	
 
 1. List all information about all suppliers.
-SELECT * FROM fall22suppliers;
+SELECT * FROM fall22suppliers
+#	SupplierID	SupplierName	SupplierAddress	SupplierCity	SupplierState
+1	AB	Abbot	123 Terry	Sacramento	CA
+2	NU	New Utensils	986 Bonita	Lansing	MI
+3	PO	Polar	9864 George	Lansing	MI
+4	QV	Quail and Vine	9450 Vine	Detroit	MI
+5	RO	Reed Only	129 Callahan	Las Vegas	NV
+6	TY	Tyson	5212 Broadway	Las Vegas	NM
+7	VB	Victor Bruno	9876 Springburn	Portland	OR
+8	WX	Weights Extra	87 W. Liverpool	Ada	MI
 
 2. Use aliases for the column headings in list of suppliers. (page 80, 81)
 SELECT supplierid AS ID, supplierName AS name, supplieraddress AS 'street address',
-suppliercity AS city, supplierstate AS STATE FROM fall22suppliers;
+suppliercity AS city, supplierstate AS STATE FROM fall22suppliers
+#	ID	name	street address	city	STATE
+1	AB	Abbot	123 Terry	Sacramento	CA
+2	NU	New Utensils	986 Bonita	Lansing	MI
+3	PO	Polar	9864 George	Lansing	MI
+4	QV	Quail and Vine	9450 Vine	Detroit	MI
+5	RO	Reed Only	129 Callahan	Las Vegas	NV
+6	TY	Tyson	5212 Broadway	Las Vegas	NM
+7	VB	Victor Bruno	9876 Springburn	Portland	OR
+8	WX	Weights Extra	87 W. Liverpool	Ada	MI
 
 3. Combine text columns into a single column, as shown in example. (page 78, 79)
 
@@ -20,54 +44,199 @@ suppliercity AS city, supplierstate AS STATE FROM fall22suppliers;
 | AB   | Abbot          | 123 Terry, Sacramento, CA     |
 +------+----------------+-------------------------------+
 
-SELECT supplierid AS ID, suppliername AS name, CONCAT(supplieraddress, ', ', suppliercity, ', ', supplierstate) AS 'supplier address' FROM fall22suppliers;
-
+SELECT supplierid AS ID, suppliername AS name, CONCAT(supplieraddress, ', ', suppliercity, ', ', supplierstate) AS 'supplier address' FROM fall22suppliers
+#	ID	name	supplier address
+1	AB	Abbot	123 Terry, Sacramento, CA
+2	NU	New Utensils	986 Bonita, Lansing, MI
+3	PO	Polar	9864 George, Lansing, MI
+4	QV	Quail and Vine	9450 Vine, Detroit, MI
+5	RO	Reed Only	129 Callahan, Las Vegas, NV
+6	TY	Tyson	5212 Broadway, Las Vegas, NM
+7	VB	Victor Bruno	9876 Springburn, Portland, OR
+8	WX	Weights Extra	87 W. Liverpool, Ada, MI
 
 4. List the states in which we have suppliers. 
-SELECT DISTINCT supplierstate FROM fall22suppliers;
-
+SELECT DISTINCT supplierstate FROM fall22suppliers
+#	supplierstate
+1	CA
+2	MI
+3	NV
+4	NM
+5	OR
 
 5. In which cities and states to we have suppliers? 
-SELECT DISTINCT suppliercity, supplierstate FROM fall22suppliers;
+SELECT DISTINCT suppliercity, supplierstate FROM fall22suppliers
+#	suppliercity	supplierstate
+1	Sacramento	CA
+2	Lansing	MI
+3	Detroit	MI
+4	Las Vegas	NV
+5	Las Vegas	NM
+6	Portland	OR
+7	Ada	MI
 
 6. For all suppliers, list supplier name, supplier city, and supplier state. 
-SELECT suppliername as name, suppliercity as city, supplierstate as state FROM fall22suppliers;
+SELECT suppliername as name, suppliercity as city, supplierstate as state FROM fall22suppliers
+#	name	city	state
+1	Abbot	Sacramento	CA
+2	New Utensils	Lansing	MI
+3	Polar	Lansing	MI
+4	Quail and Vine	Detroit	MI
+5	Reed Only	Las Vegas	NV
+6	Tyson	Las Vegas	NM
+7	Victor Bruno	Portland	OR
+8	Weights Extra	Ada	MI
 
 a. by supplier city
 SELECT suppliername as name, suppliercity as city, supplierstate as state FROM fall22suppliers ORDER BY suppliercity;
+#	name	city	state
+1	Weights Extra	Ada	MI
+2	Quail and Vine	Detroit	MI
+3	New Utensils	Lansing	MI
+4	Polar	Lansing	MI
+5	Reed Only	Las Vegas	NV
+6	Tyson	Las Vegas	NM
+7	Victor Bruno	Portland	OR
+8	Abbot	Sacramento	CA
 
 b. by supplier state
 SELECT suppliername as name, suppliercity as city, supplierstate as state FROM fall22suppliers ORDER BY supplierstate;
+#	name	city	state
+1	Abbot	Sacramento	CA
+2	New Utensils	Lansing	MI
+3	Polar	Lansing	MI
+4	Quail and Vine	Detroit	MI
+5	Weights Extra	Ada	MI
+6	Tyson	Las Vegas	NM
+7	Reed Only	Las Vegas	NV
+8	Victor Bruno	Portland	OR
 
 c. by state, with suppliers in same state by city
-SELECT suppliername as name, suppliercity as city, supplierstate as state FROM fall22suppliers ORDER BY supplierstate, suppliercity;
-
+SELECT suppliername as name, suppliercity as city, supplierstate as state FROM fall22suppliers ORDER BY supplierstate, suppliercity
+#	name	city	state
+1	Abbot	Sacramento	CA
+2	Weights Extra	Ada	MI
+3	Quail and Vine	Detroit	MI
+4	New Utensils	Lansing	MI
+5	Polar	Lansing	MI
+6	Tyson	Las Vegas	NM
+7	Reed Only	Las Vegas	NV
+8	Victor Bruno	Portland	OR
 CUSTOMERS
 
 7. Display the structure of the customers table.
 DESC fall22customers;
+#	Field	Type	Null	Key	Default	Extra
+1	CustomerID	smallint(6)	NO	PRI		
+2	CustomerFName	varchar(15)	YES			
+3	CustomerLName	varchar(15)	YES			
+4	CustomerStreetAddress	varchar(20)	YES			
+5	CustomerCity	varchar(21)	YES			
+6	CustomerState	char(2)	YES			
+7	CurrentBalance	decimal(7,2)	YES			
+8	CreditLimit	decimal(8,2)	YES			
+9	SalesRepNO	tinyint(3) unsigned	YES			
 
 8. For all the customers list customer id, current balance, credit limit, and the difference between credit limit and current balance.
 SELECT customerID, currentBalance, creditLimit, creditLimit - currentBalance from fall22customers;
+#	customerID	currentBalance	creditLimit	creditLimit - currentBalance
+1	124	418.75	500.00	81.25
+2	256	10.75	800.00	789.25
+3	311	200.10	300.00	99.90
+4	315	320.75	300.00	-20.75
+5	405	201.75	800.00	598.25
+6	412	908.75	1000.00	91.25
+7	522	49.50	800.00	750.50
+8	567	201.20	300.00	98.80
+9	587	57.75	500.00	442.25
+10	622	575.50	500.00	-75.50
+11	682	0.00	500.00	500.00
 
 9. List customer id, first name (alias), last name (alias), current balance, credit limit, the difference between credit limit and current balance with a column alias of "remaining balance"
-
-
+select customerID, customerFName as "first name", customerLName as "last name", currentBalance, creditLimit, creditlimit-currentBalance as "remaining balance" from fall22customers
+#	customerID	first name	last name	currentBalance	creditLimit	remaining balance
+1	124	Sally	Adams	418.75	500.00	81.25
+2	256	Ann	Samuels	10.75	800.00	789.25
+3	311	Don	Charles	200.10	300.00	99.90
+4	315	Tom	Daniels	320.75	300.00	-20.75
+5	405	Al	Williams	201.75	800.00	598.25
+6	412	Sally	Adams	908.75	1000.00	91.25
+7	522	Mary	Nelson	49.50	800.00	750.50
+8	567	Joe	Baker	201.20	300.00	98.80
+9	587	Judy	Roberts	57.75	500.00	442.25
+10	622	Dan	Martin	575.50	500.00	-75.50
+11	682	Sahara	Martin	0.00	500.00	500.00
 
 10. Make a copy of query from #9 and sort in order of remaining balance.
-
+select customerID, customerFName as "first name", customerLName as "last name", currentBalance, creditLimit, creditlimit-currentBalance as remaining_balance from fall22customers order by remaining_balance
+#	customerID	first name	last name	currentBalance	creditLimit	remaining_balance
+1	622	Dan	Martin	575.50	500.00	-75.50
+2	315	Tom	Daniels	320.75	300.00	-20.75
+3	124	Sally	Adams	418.75	500.00	81.25
+4	412	Sally	Adams	908.75	1000.00	91.25
+5	567	Joe	Baker	201.20	300.00	98.80
+6	311	Don	Charles	200.10	300.00	99.90
+7	587	Judy	Roberts	57.75	500.00	442.25
+8	682	Sahara	Martin	0.00	500.00	500.00
+9	405	Al	Williams	201.75	800.00	598.25
+10	522	Mary	Nelson	49.50	800.00	750.50
+11	256	Ann	Samuels	10.75	800.00	789.25
 
 
 11. List customer id, first name (alias), last name (alias), current balance, credit limit. Sort by credit limit (lowest to highest), with customers with the same credit limit sorted by current balance (highest to lowest).
-
-
-PARTS
+select customerid, customerfname as "first name", customerLname as "last name", currentBalance, creditLimit from fall22customers order by creditLimit, currentBalance desc
+#	customerid	first name	last name	currentBalance	creditLimit
+1	315	Tom	Daniels	320.75	300.00
+2	567	Joe	Baker	201.20	300.00
+3	311	Don	Charles	200.10	300.00
+4	622	Dan	Martin	575.50	500.00
+5	124	Sally	Adams	418.75	500.00
+6	587	Judy	Roberts	57.75	500.00
+7	682	Sahara	Martin	0.00	500.00
+8	405	Al	Williams	201.75	800.00
+9	522	Mary	Nelson	49.50	800.00
+10	256	Ann	Samuels	10.75	800.00
+11	412	Sally	Adams	908.75	1000.00
 
 12. Display the structure of the customers table.
-
+desc fall22customers
+#	Field	Type	Null	Key	Default	Extra
+1	CustomerID	smallint(6)	NO	PRI		
+2	CustomerFName	varchar(15)	YES			
+3	CustomerLName	varchar(15)	YES			
+4	CustomerStreetAddress	varchar(20)	YES			
+5	CustomerCity	varchar(21)	YES			
+6	CustomerState	char(2)	YES			
+7	CurrentBalance	decimal(7,2)	YES			
+8	CreditLimit	decimal(8,2)	YES			
+9	SalesRepNO	tinyint(3) unsigned	YES
 
 13. List the parts (part number and description), itemclass, unit price, 10% discounted price, 15% discounted price. Sort by itemclass with parts in same item class parts are arranged with the most expensive part at the top of the list.
-
+select partno, partdescription, itemclass, unitprice, unitPrice-(unitPrice * .10) as "10% discount", unitPrice-(unitPrice * .15) as "15% discount" from fall22parts order by itemclass, unitPrice desc;
+#	partno	partdescription	itemclass	unitprice	10% discount	15% discount
+1	BT04	STOVE	AP	402.99	362.6910	342.5415
+2	BZ66	WASHER	AP	311.95	280.7550	265.1575
+3	CX11	MIXER	HW	57.95	52.1550	49.2575
+4	BH22	TOASTER	HW	34.95	31.4550	29.7075
+5	CA14	SKILLET	HW	19.95	17.9550	16.9575
+6	AX12	IRON	HW	17.95	16.1550	15.2575
+7	CB03	BIKE	SG	187.50	168.7500	159.3750
+8	CZ81	WEIGHTS	SG	108.99	98.0910	92.6415
+9	AZ52	SKATES	SG	24.95	22.4550	21.2075
+10	BA74	BASEBALL	SG	4.95	4.4550	4.2075
 
 14. Modify #13 to use the ROUND function to round the discounted prices to the nearest cent and use columns aliases: 10% Discounted Price and 20% Discounted Price.
+select partno, partdescription, itemclass, round(unitprice, 2) as unitPrice, round(unitPrice-(unitPrice * .10), 2) as "10% discount", round(unitPrice-(unitPrice * .15), 2) as "15% discount" from fall22parts order by itemclass, unitPrice desc;
+#	partno	partdescription	itemclass	unitPrice	10% discount	15% discount
+1	BT04	STOVE	AP	402.99	362.69	342.54
+2	BZ66	WASHER	AP	311.95	280.76	265.16
+3	CX11	MIXER	HW	57.95	52.16	49.26
+4	BH22	TOASTER	HW	34.95	31.46	29.71
+5	CA14	SKILLET	HW	19.95	17.96	16.96
+6	AX12	IRON	HW	17.95	16.16	15.26
+7	CB03	BIKE	SG	187.50	168.75	159.38
+8	CZ81	WEIGHTS	SG	108.99	98.09	92.64
+9	AZ52	SKATES	SG	24.95	22.46	21.21
+10	BA74	BASEBALL	SG	4.95	4.46	4.21
 
+15. 
