@@ -1,0 +1,86 @@
+8. Who were the sales reps for the customers who placed the orders? List customer number, customer first and last names in one column, order number, order date and sales rep name first and last name in one column.
+SELECT customerid, CONCAT(customerfname, ' ',customerlname) AS customer, orderid, orderdate,partdescription, suppliername
+
+9. Which suppliers supplied the parts on the orders? List customer number, customer (alias), order number, order date, part description and supplier's name.
+SELECT customerid, CONCAT(customerfname, ' ',customerlname) AS customer, orderid, orderdate, partdescription, suppliername
+
+10. Which suppliers in the suppliers table are not represented in the parts table?
+
+11. List the ids and names of customers and their sales reps (ids and names).
+SELECT customerid, CONCAT(customerfname, ' ', customerlname) AS customer, salesrepid, CONCAT(salesrepfname, ' ',salesreplname) from fall22customers join fall22salesreps on salesrepno=salesrepid
+#	customerid	customer	salesrepid	CONCAT(salesrepfname, ' ',salesreplname)
+1	124	Sally Adams	3	Mary Jones
+2	256	Ann Samuels	6	William Smith
+3	311	Don Charles	12	Sam Brown
+4	315	Tom Daniels	6	William Smith
+5	405	Al Williams	12	Sam Brown
+6	412	Sally Adams	3	Mary Jones
+7	522	Mary Nelson	12	Sam Brown
+8	567	Joe Baker	6	William Smith
+9	587	Judy Roberts	6	William Smith
+10	622	Dan Martin	3	Mary Jones
+
+SELECT customerid, concat(customerfname, ' ', customerLname) as customer, salesrepid, concat(salesrepfname, ' ', salesreplname) as salesrep from fall22customers join fall22salesreps on salesrepno=salesrepid
+#	customerid	customer	salesrepid	salesrep
+1	124	Sally Adams	3	Mary Jones
+2	256	Ann Samuels	6	William Smith
+3	311	Don Charles	12	Sam Brown
+4	315	Tom Daniels	6	William Smith
+5	405	Al Williams	12	Sam Brown
+6	412	Sally Adams	3	Mary Jones
+7	522	Mary Nelson	12	Sam Brown
+8	567	Joe Baker	6	William Smith
+9	587	Judy Roberts	6	William Smith
+10	622	Dan Martin	3	Mary Jones
+
+12. Who has been assigned a non-existent sales rep? List the customer name. 
+SELECT customerid, concat(customerfname, ' ', customerLname) as customer, salesrepid, concat(salesrepfname, ' ', salesreplname) as salesrep from fall22customers left join fall22salesreps on salesrepno=salesrepid
+#	customerid	customer	salesrepid	salesrep
+1	124	Sally Adams	3	Mary Jones
+2	256	Ann Samuels	6	William Smith
+3	311	Don Charles	12	Sam Brown
+4	315	Tom Daniels	6	William Smith
+5	405	Al Williams	12	Sam Brown
+6	412	Sally Adams	3	Mary Jones
+7	522	Mary Nelson	12	Sam Brown
+8	567	Joe Baker	6	William Smith
+9	587	Judy Roberts	6	William Smith
+10	622	Dan Martin	3	Mary Jones 11	682	Sahara Martin
+Sahara Martin
+
+13. Which sales reps have not been assigned any customers.
+select salesrepcity as city, salesrepstate as state, 'sales rep' as role from fall22salesreps union all select customercity, customerstate, 'Customer' from fall22customers
+#	city	state	role
+1	Grant	MI	sales rep
+2	Ada	MI	sales rep
+3	Lansing	MI	sales rep
+4	Ada	MI	sales rep
+5	Lansing	MI	Customer
+6	Grant	MI	Customer
+7	Ira	MI	Customer
+8	Kent	MI	Customer
+9	Grant	MI	Customer
+10	Lansing	MI	Customer
+11	Ada	MI	Customer
+12	Harper	MI	Customer
+13	Ada	MI	Customer
+14	Grant	MI	Customer
+15	Detroit	MI	Customer
+
+14. List city, state in which we have customers or sales reps. (Hint: UNION)
++---------+-------+-----------+
+| city    | state | role      |
++---------+-------+-----------+
+| Grant   | MI    | sales rep |
+| Ada     | MI    | sales rep |
+| Lansing | MI    | sales rep |
+| Lansing | MI    | customer  |
+| Grant   | MI    | customer  |
+| Ira     | MI    | customer  |
+| Kent    | MI    | customer  |
+| Ada     | MI    | customer  |
+| Harper  | MI    | customer  |
+| Detroit | MI    | customer  |
++---------+-------+-----------+
+10 rows in set (0.00 sec)
+
