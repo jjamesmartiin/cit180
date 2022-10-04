@@ -1,0 +1,71 @@
+1. Create a test table.
+
+
+
+2. Insert new rows into parts_copy.
+
+a. InstaPot: ('CB13','InstaPot','AP',37.50,'NU')
+
+b. Soup Warmer: ('CC13','Soup Warmer',NULL,17.50,'WX')
+
+c. Contour Gauge: ('NU','DX01','Contour Gauge','HW',14.90)
+
+d. Boxing gloves: ('DZ','Boxing gloves',14.95)
+
+e. multiple items: 
+('LA14','SAUCE PAN','HW',29.95,'WX')
+('JB03','SKATE BOARD','SG',287.5,'NU')
+('HX11','FONDUE FORKS','HW',11.99,'VB')
+('SZ81','HEAVY BAG STAND','SG',119.47,'WX')
+
+
+
+f. View all newly INSERTed rows
+
+
+
+3. Update existing rows.
+
+UPDATE table_name
+SET column_name1 = expression_1 [, column_name2 = expression_2]...
+[WHERE search_condition];
+
+a. All records.
+
+
+b. Change itemclass for the soup warmer.
+
+
+c. Update several attributes in one query.
+
+
+d. Suppose that Michigan imposes 25% tariffs on imports from out of state. Update the prices.
+
+Whose prices will change?
+
+
+Update the prices of items supplied by "foreign" suppliers.
+
+
+4. Delete rows.
+
+DELETE FROM table_name
+[WHERE search_condition]
+
+a. Test to see if advanced Query Editor has a safe mode which will not allow you to run a delete query if there is no WHERE clause.
+
+
+b. Delete parts from "foreign" suppliers.
+
+
+c. Delete parts in itemclass HW.
+
+
+d. Remove parts costing less than 100 supplied by NU or WX. 
+
+
+5. Delete tables.
+
+DROP TABLE table_name;
+
+Delete parts_copy_copy.

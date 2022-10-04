@@ -1,0 +1,218 @@
+1.	List the US Census Bureau regions and their divisions. Remove duplicates. Sort alphabetically by region, with divisions in the same region listed alphabetically.
+
+SELECT DISTINCT regionname, divisionname
+FROM states_xx
+ORDER BY regionname, divisionname;
+
+Results:
+SELECT DISTINCT regionname, divisionname
+FROM states_xx
+ORDER BY regionname, divisionname
+#	regionname	divisionname
+1	Midwest	East North Central
+2	Midwest	West North Central
+3	Northeast	Middle Atlantic
+4	Northeast	New England
+5	South	East South Central
+6	South	South Atlantic
+7	South	West South Central
+8	West	Mountain
+9	West	Pacific
+
+2.	List state code, state name, and capital city for those states whose state capital name begins with the letters H through L, inclusive. Sort the list in alphabetical order of state  name.
+
+SELECT statecode, statename, capital
+FROM states_xx
+WHERE capital >= 'H'
+AND capital < 'M'
+ORDER BY statename
+#	statecode	statename	capital
+1	AK	Alaska	Juneau
+2	AR	Arkansas	Little Rock
+3	CT	Connecticut	Hartford
+4	HI	Hawaii	Honolulu
+5	IN	Indiana	Indianapolis
+6	MI	Michigan	Lansing
+7	MS	Mississippi	Jackson
+8	MO	Missouri	Jefferson City
+9	MT	Montana	Helena
+10	NE	Nebraska	Lincoln
+11	PA	Pennsylvania	Harrisburg
+ 
+3.	If we define a governor’s term in office as yearto minus yearfrom, list the govnum, first name, middle initial, last name, and term (use alias "term in office") of each governor whose term is something other than the conventional 4 years or 8 years. Use the IN operator to filter. The governor with the longest term should be at the top of the list, with governors having the same term in office in govnum order.
+
+SELECT govnum, govfname, govmi, govlname, yearto-yearfrom AS "term in office"
+FROM nvgovernors_xx
+WHERE yearto-yearfrom NOT IN (4, 8)
+ORDER BY yearto-yearfrom DESC, govnum;
+
+Results:
+SELECT govnum, govfname, govmi, govlname, yearto-yearfrom AS "term in office"
+FROM nvgovernors_xx
+WHERE yearto-yearfrom NOT IN (4, 8)
+ORDER BY yearto-yearfrom DESC, govnum
+#	govnum	govfname	govmi	govlname	term in office
+1	26	Bob		Miller	10
+2	1	Henry	G.	Blasdel	7
+3	9	Reinhold		Sadler	7
+4	15	Fred	B.	Balzar	7
+5	18	Edward	P.	Carville	6
+6	19	Vail	M.	Pittman	6
+7	25	Richard		Bryan	6
+8	10	John		Sparks	5
+9	5	Charles	C.	Stevenson	3
+10	11	Denver	S.	Dickerson	3
+11	6	Frank		Bell	1
+12	8	John	E.	Jones	1
+13	16	Morley		Griswold	1
+
+4.	List the names of NV governors who were born in the Mountain or the Pacific geographical divisions. Include the governor’s last name, birth city, birth state and the geographical division name. Sort by geographical division name.
+
+SELECT govlname, birthcity, birthstate, divisionname
+FROM nvgovernors_xx JOIN states_xx
+	ON birthstate = statename
+WHERE divisionname = 'Mountain'
+OR divisionname = 'Pacific'
+ORDER BY divisionname;
+
+Results:
+SELECT govlname, birthcity, birthstate, divisionname
+FROM nvgovernors_xx JOIN states_xx
+ON birthstate = statename
+WHERE divisionname = 'Mountain'
+OR divisionname = 'Pacific'
+ORDER BY divisionname
+#	govlname	birthcity	birthstate	divisionname
+1	Boyle	Gold Hill	Nevada	Mountain
+2	Balzar	Virginia City	Nevada	Mountain
+3	Griswold	Elko	Nevada	Mountain
+4	Kirman, Sr.	Virginia City	Nevada	Mountain
+5	Carville	Elko County	Nevada	Mountain
+6	Russell	Lovelock	Nevada	Mountain
+7	Sawyer	Twin Falls	Idaho	Mountain
+8	Laxalt	Reno	Nevada	Mountain
+9	Gibbons	Sparks	Nevada	Mountain
+10	Dickerson	Millville	California	Pacific
+11	List	Visalia	California	Pacific
+12	Sandoval	Redding	California	Pacific
+
+5.	List the names of political parties in the political parties table have not had a member serving as governor of Nevada. Use a JOIN, not a subquery.
+
+SELECT partyname, govnum
+FROM nvpoliticalparties_xx p LEFT JOIN nvgovernors_xx USING (partyid)
+WHERE govnum IS NULL;
+
+SELECT partyname, govnum
+FROM nvpoliticalparties_xx p LEFT JOIN nvgovernors_xx USING (partyid)
+WHERE govnum IS NULL
+#	partyname	govnum
+1	Citizens	
+2	Democrat-Silver	
+3	Emigration	
+4	Fusion	
+5	Green	
+6	Independent American	
+7	Independent	
+8	Libertarian	
+9	New Alliance	
+10	Natural Law	
+11	Peoples	
+12	Populist	
+13	Progressive	
+14	Reform	
+15	Socialist	
+16	Union	
+17	U.S Constitution	
+18	Veterans
+
+6.	List information about states that became states in the years 1864 to 1890, inclusive. The results should be sorted by year of statehood, with states of the same year in alphabetical order by state name. Your answer must be in the form of a sentence having the wording, formatting, and sort order shown in the example below, with the column alias Answer. 
+
+SELECT CONCAT(statename,', a state in the ',divisionname, ' division, became a state in ',statehoodyear,'.') AS Answer
+FROM states_xx
+WHERE statehoodyear BETWEEN 1864 AND 1890
+ORDER BY statehoodyear, statename;
+
+Results:
+SELECT CONCAT(statename,', a state in the ',divisionname, ' division, became a state in ',statehoodyear,'.') AS Answer
+FROM states_xx
+WHERE statehoodyear BETWEEN 1864 AND 1890
+ORDER BY statehoodyear, statename
+#	Answer
+1	Nevada, a state in the Mountain division, became a state in 1864.
+2	Nebraska, a state in the West North Central division, became a state in 1867.
+3	Colorado, a state in the Mountain division, became a state in 1876.
+4	Montana, a state in the Mountain division, became a state in 1889.
+5	North Dakota, a state in the West North Central division, became a state in 1889.
+6	South Dakota, a state in the West North Central division, became a state in 1889.
+7	Washington, a state in the Pacific division, became a state in 1889.
+8	Idaho, a state in the Mountain division, became a state in 1890.
+9	Wyoming, a state in the Mountain division, became a state in 1890.
+
+7.	List the first and last names of governors (in a single column, alias “Governor name”) and, for each governor, his age when he was inaugurated, alias "At the beginning" and his age when he left office, alias "At the end." List only the five oldest at leaving office.
+
+SELECT CONCAT(govfname,' ',govlname) AS 'Governor name', yearfrom-born AS "At the beginning", yearto-born AS "At the end"
+FROM nvgovernors_xx 
+ORDER BY yearto-born DESC
+LIMIT 5;
+
+Results:
+SELECT CONCAT(govfname,' ',govlname) AS 'Governor name', yearfrom-born AS "At the beginning", yearto-born AS "At the end"
+FROM nvgovernors_xx
+ORDER BY yearto-born DESC
+LIMIT 5
+#	Governor name	At the beginning	At the end
+1	Lewis Bradley	66	74
+2	Kenny Guinn	63	71
+3	Vail Pittman	65	71
+4	Jim Gibbons	63	67
+5	John Sparks	60	65
+
+8.	List the governor's name (first and last in a single column, alias "Governor name") and his birth state of any Governor born in a place that is NOT listed in the states table. Use a JOIN, not a subquery.
+
+SELECT CONCAT(govfname,' ',govlname) AS 'Governor name', statename
+FROM nvgovernors_xx LEFT JOIN states_xx 
+	ON birthstate = statename
+WHERE statename IS NULL;
+
+SELECT CONCAT(govfname,' ',govlname) AS 'Governor name', statename
+FROM nvgovernors_xx LEFT JOIN states_xx
+ON birthstate = statename
+WHERE statename IS NULL
+#	Governor name	statename
+1	Frank Bell	
+2	John Jones	
+3	Reinhold Sadler	
+4	Richard Bryan
+
+9.	Who died in office? Assume that if yearto and died are the same, the governor died in office. List the governor's name (first and last in a single column, alias "Governor name"), his party affiliation, yearto and died.
+
+SELECT CONCAT(govfname,' ',govlname) AS 'Governor name', yearto, died, partyname
+FROM nvgovernors_xx JOIN nvpoliticalparties_xx USING (partyid)
+WHERE yearto = died;
+
+Results:
+SELECT CONCAT(govfname,' ',govlname) AS 'Governor name', yearto, died, partyname
+FROM nvgovernors_xx JOIN nvpoliticalparties_xx USING (partyid)
+WHERE yearto = died
+#	Governor name	yearto	died	partyname
+1	Lewis Bradley	1879	1879	Democratic
+2	Charles Stevenson	1890	1890	Republican
+3	John Jones	1896	1896	Silver
+4	John Sparks	1908	1908	Silver-Democrat
+5	Fred Balzar	1934	1934	Republican
+
+10.	Who was governor of Nevada when the Armistice was signed ending World War I, on November 11, 1918? Use the date in this format: '1918-11-11'. List the governor's name (first and last in a single column, alias "Governor name"), the year he took office and the year he left office.
+
+SELECT CONCAT(govfname,' ',govlname) AS 'Governor name',yearfrom, yearto
+FROM nvgovernors_xx
+WHERE '1918-11-11' BETWEEN yearfrom AND yearto
+
+Results:
+SELECT CONCAT(govfname,' ',govlname) AS 'Governor name',yearfrom, yearto
+FROM nvgovernors_xx
+WHERE '1918-11-11' BETWEEN yearfrom AND yearto
+#	Governor name	yearfrom	yearto
+1	Emmet Boyle	1915	1923
+
+
+

@@ -64,7 +64,6 @@ select govlname, birthcity, birthstate, divisionname from nvgovernors_jm join st
 11	List	Visalia	California	Pacific
 12	Sandoval	Redding	California	Pacific
 
-
 5.	Which political parties listed in the political parties table have not had a member serving as governor of Nevada. Use a JOIN, not a subquery. (18 rows)
 select partyname from nvpoliticalparties_jm left join nvgovernors_jm on nvpoliticalparties_jm.partyid=nvgovernors_jm.partyid where govnum is NULL
 #	partyname
