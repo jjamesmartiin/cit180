@@ -1,3 +1,6 @@
+drop table if exists listings;
+drop table if exists agents;
+drop table if exists agencies;
 
 CREATE TABLE agencies (
   agencyno tinyint,
@@ -22,7 +25,8 @@ CREATE TABLE agents (
   agentlast varchar(25),
   agentphone varchar(20),
   agencyno tinyint,
-  PRIMARY KEY (agentno)
+  PRIMARY KEY (agentno),
+  FOREIGN KEY (agencyno) REFERENCES agencies (agencyno)
 );
 
 INSERT INTO agents (agentno, agentfirst, agentlast, agentphone, agencyno) VALUES
@@ -49,7 +53,8 @@ CREATE TABLE listings (
   pool ENUM('y','n'),
   asking int,
   agentno tinyint,
-  PRIMARY KEY (listingno)
+  PRIMARY KEY (listingno),
+  FOREIGN KEY (agentno) REFERENCES agents (agentno)
 );
 
 INSERT INTO listings (listingno, style, location, sqft, lakeft, br, baths, garage, pool, asking, agentno) VALUES

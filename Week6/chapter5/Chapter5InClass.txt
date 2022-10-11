@@ -1,33 +1,95 @@
 1. Create a test table.
-
-
+select * from part_copy
+#	PartNO	PartDescription	ItemClass	UnitPrice	SupplierID
+1	AX12	IRON	HW	17.95	AB
+2	AZ52	SKATES	SG	24.95	AB
+3	BA74	BASEBALL	SG	4.95	TY
+4	BH22	TOASTER	HW	34.95	TY
+5	BT04	STOVE	AP	402.99	WX
+6	BZ66	WASHER	AP	311.95	AB
+7	CA14	SKILLET	HW	19.95	WX
+8	CB03	BIKE	SG	187.50	NU
+9	CX11	MIXER	HW	57.95	VB
+10	CZ81	WEIGHTS	SG	108.99	WX
 
 2. Insert new rows into parts_copy.
-
+insert into part_copy (partno, partdescription, itemclass, unitprice, supplierid) values ('cb13', 'instapot', 'ap',37.5,'nu');
+select * from part_copy
 a. InstaPot: ('CB13','InstaPot','AP',37.50,'NU')
+#	PartNO	PartDescription	ItemClass	UnitPrice	SupplierID
+1	AX12	IRON	HW	17.95	AB
+2	AZ52	SKATES	SG	24.95	AB
+3	BA74	BASEBALL	SG	4.95	TY
+4	BH22	TOASTER	HW	34.95	TY
+5	BT04	STOVE	AP	402.99	WX
+6	BZ66	WASHER	AP	311.95	AB
+7	CA14	SKILLET	HW	19.95	WX
+8	CB03	BIKE	SG	187.50	NU
+9	CX11	MIXER	HW	57.95	VB
+10	CZ81	WEIGHTS	SG	108.99	WX
+11	CB13	INSTAPOT	AP	37.50	NU
 
 b. Soup Warmer: ('CC13','Soup Warmer',NULL,17.50,'WX')
+insert into part_copy values ('CC13', 'Soup Warmer', NULL, 17.5, 'WX');
+select * from part_copy
+#	PartNO	PartDescription	ItemClass	UnitPrice	SupplierID
+1	AX12	IRON	HW	17.95	AB
+2	AZ52	SKATES	SG	24.95	AB
+3	BA74	BASEBALL	SG	4.95	TY
+4	BH22	TOASTER	HW	34.95	TY
+5	BT04	STOVE	AP	402.99	WX
+6	BZ66	WASHER	AP	311.95	AB
+7	CA14	SKILLET	HW	19.95	WX
+8	CB03	BIKE	SG	187.50	NU
+9	CX11	MIXER	HW	57.95	VB
+10	CZ81	WEIGHTS	SG	108.99	WX
+11	CB13	INSTAPOT	AP	37.50	NU
+12	CC13	Soup Warmer		17.50	WX
 
 c. Contour Gauge: ('NU','DX01','Contour Gauge','HW',14.90)
+insert into part_copy (supplierid, partno, partdescription, itemclass, unitprice) values ('NU','DX01','Contour Gauge','HW',14.90);
+select * from part_copy
+#	PartNO	PartDescription	ItemClass	UnitPrice	SupplierID
+1	AX12	IRON	HW	17.95	AB
+2	AZ52	SKATES	SG	24.95	AB
+3	BA74	BASEBALL	SG	4.95	TY
+4	BH22	TOASTER	HW	34.95	TY
+5	BT04	STOVE	AP	402.99	WX
+6	BZ66	WASHER	AP	311.95	AB
+7	CA14	SKILLET	HW	19.95	WX
+8	CB03	BIKE	SG	187.50	NU
+9	CX11	MIXER	HW	57.95	VB
+10	CZ81	WEIGHTS	SG	108.99	WX
+11	CB13	INSTAPOT	AP	37.50	NU
+12	CC13	Soup Warmer		17.50	WX
+13	DX01	Contour Gauge	HW	14.90	NU
 
 d. Boxing gloves: ('DZ','Boxing gloves',14.95)
+
 
 e. multiple items: 
 ('LA14','SAUCE PAN','HW',29.95,'WX')
 ('JB03','SKATE BOARD','SG',287.5,'NU')
 ('HX11','FONDUE FORKS','HW',11.99,'VB')
 ('SZ81','HEAVY BAG STAND','SG',119.47,'WX')
-
-
+insert into part_copy values ('LA14', 'SAUCEPAN', 'HW', 29.95, 'WX'), ('JB03', 'SKATEBOARD', 'SG', 287.5, 'NU'), ('HX11', 'FONDUE FORKS', 'HW', 11.99, 'VB'), ('SZ81', 'HEAVY BAG STAND', 'SG', 119.47, 'WX');
 
 f. View all newly INSERTed rows
-
+SELECT * FROM part_copy LIMIT 10, 50
+#	PartNO	PartDescription	ItemClass	UnitPrice	SupplierID
+1	CB13	INSTAPOT	AP	37.50	NU
+2	CC13	Soup Warmer		17.50	WX
+3	DX01	Contour Gauge	HW	14.90	NU
+4	LA14	SAUCEPAN	HW	29.95	WX
+5	JB03	SKATEBOARD	SG	287.50	NU
+6	HX11	FONDUE FORKS	HW	11.99	VB
+7	SZ81	HEAVY BAG STAND	SG	119.47	WX
 
 
 3. Update existing rows.
 
-UPDATE table_name
-SET column_name1 = expression_1 [, column_name2 = expression_2]...
+UPDATE part_copy
+SET partdescription = UPPER(partdescription)[, column_name2 = expression_2]...
 [WHERE search_condition];
 
 a. All records.
@@ -37,12 +99,14 @@ b. Change itemclass for the soup warmer.
 
 
 c. Update several attributes in one query.
-
+Update part_copy set itemclass = 'ap' where partno = 'cc13'
 
 d. Suppose that Michigan imposes 25% tariffs on imports from out of state. Update the prices.
-
+UPDATE part_copy set partno = 'DZ23', itemclass = 'SG', supplierid='AX' where partno='DZ';
 Whose prices will change?
 
+e.
+UPDATE part_copy set unitprice = round(1.05*unitprice,2) where itemclass in ('AP', 'HW')
 
 Update the prices of items supplied by "foreign" suppliers.
 
