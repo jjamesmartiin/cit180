@@ -1,11 +1,13 @@
-221011 Notes
-Process
-User requirements
-End users
-Hands-on users
-Design
-mock-upkKK
+## 221011 Notes
+* Process
+  * User requirements
+  * End users
+  * Hands-on users
+  * Design
+  * mock-up
+* 
 
+ <!--imported before markdown switch-->
 221004 Notes
 Defining a DB Schema
 Example
